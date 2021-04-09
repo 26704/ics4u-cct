@@ -1,0 +1,32 @@
+<html lang="en">
+  <head>
+    <title>Python</title>
+  </head>
+  <h1>
+    This is the raw code for the Spreadsheets lab. There is no sumbit for the
+    lab, so this is the best way to show the code.
+  </h1>
+  <body>
+    <pre>
+import csv
+
+counts = {}
+
+with open("favoriteTVShows.csv", "r") as file:
+    reader = csv.DictReader(file)
+
+def f(item):
+  return item[1]    
+    
+    for row in reader:
+        title = row["title"]
+        if title in counts:
+            counts[title] += 1
+        else:
+            counts[title] = 1 
+            
+for title, count in sorted(counts.items(), key=f, reverse=True):
+    print(title, count, sep=" | ") 
+  </pre>
+  </body>
+</html>
